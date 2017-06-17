@@ -1,5 +1,6 @@
 FROM alpine:3.5
 
+EXPOSE 3128 3130
 VOLUME ["/data"]
 
 RUN apk --update --no-cache add squid acf-squid \
@@ -13,6 +14,4 @@ RUN apk --update --no-cache add squid acf-squid \
     
 ADD src/ /
 
-ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD [ "squid" ]
-EXPOSE 3128 3130
+CMD ["/docker-entrypoint.sh"]
